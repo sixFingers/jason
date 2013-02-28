@@ -19,7 +19,7 @@ class Jason {
 
   public function save($object) {
     $collection = $this->read();
-    $key = array_key_exists("key", $object) ? $object["key"]: "_".count($collection->items);
+    $key = array_key_exists("key", $object) ? $object["key"]: "_".count((array)$collection->items);
     if(array_key_exists("key", $object)) {
      unset($object["key"]);
     }
