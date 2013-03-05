@@ -72,7 +72,10 @@ class Jason {
       }
     }
 
-    return $results;
+    if(count($results) > 1)
+      return $results;
+    else
+      return $results[0];
   }
 
   public function all($array = true) {
