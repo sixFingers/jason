@@ -76,8 +76,10 @@ class Jason {
 
     if(count($results) > 1)
       return $results;
-    else
+    else if(count($results) > 0)
       return $results[0];
+    else
+      return false;
   }
 
   public function all($array = true) {
