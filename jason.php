@@ -26,8 +26,11 @@ class Jason {
       foreach($object as $field=>$value) {
         $item->$field = $value;
       }
+      $collection->items->$key = $item;
+    } else {
+      $collection->items->$key = $object;
     }
-    $collection->items->$key = $item;
+    
     if($this->write($collection)) {
       return $this;
     } else {
