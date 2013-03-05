@@ -20,10 +20,15 @@ class Jason {
   public function save($object) {
     $collection = $this->read();
     $key = array_key_exists("key", $object) ? $object["key"]: "_".count($collection->items);
+    $item = $object;
     if(array_key_exists("key", $object)) {
-     unset($object["key"]);
+      unset($object["key"]);
+      $item = $collection->items->$key;
+      foreach($object as $field=>$value) {
+        $item->$field = $value;
+      }
     }
-    $collection->items->$key = $object;
+    $collection->items->$key = $item;
     if($this->write($collection)) {
       return $this;
     } else {
